@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Form Styles */
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply flex items-center space-x-2 text-sm font-medium text-gray-700;
+}
+
+.form-input {
+  @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 transition-all duration-300;
+}
+
+/* Page Transition Animation */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Hover Animation for Featured Cards */
+.featured-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.featured-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Benefit Icon Animation */
+.benefit-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.benefit-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Button Hover Animation */
+.button-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Team Member Card Animation */
+.team-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+/* Pricing Card Animation */
+.pricing-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Navigation Link Animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Form Section Transitions */
+.form-section {
+  transition: all 0.3s ease-in-out;
+}
+
+.form-section.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.form-section.inactive {
+  transform: translateX(100%);
+  opacity: 0;
+  position: absolute;
+}
