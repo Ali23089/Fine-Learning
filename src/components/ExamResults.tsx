@@ -4,64 +4,94 @@ import { Award, Star, Trophy, Target } from 'lucide-react';
 const ExamResults = () => {
   const exams = [
     {
-      icon: <Trophy className="h-12 w-12 text-secondary" />,
+      icon: <Trophy className="h-12 w-12 text-[#7c1411]" />,
       title: '11 Plus',
-      description: 'The 11+ programme is designed to prepare students for the highly competitive entrance exams required for grammar and independent schools. While sections such as English and Maths are taught in line with the National Curriculum, reasoning sections are not typically covered in schools. As a result, students who undertake specialised 11+ education are at a distinct advantage, increasing their chances of success. This programme offers an excellent opportunity to enhance a child’s education. While we cannot guarantee admission to a grammar school due to the limited number of places and high number of applications, we are committed to thoroughly preparing students for the entrance exams.'
+      description:
+        'Give your child the winning edge they need for success. Our tailored teaching program maximizes their chances of excelling in the 11 Plus exams.',
+      years: 'Year 3-5'
     },
     {
-      icon: <Star className="h-12 w-12 text-secondary" />,
+      icon: <Star className="h-12 w-12 text-[#7c1411]" />,
       title: 'SATs',
-      description: 'Students in Year 2 and Year 6 are expected to sit their SATs exams. Preparations for these exams are made throughout the year with an emphasis on past paper exams. For Year 2, the exam consists of an untimed test to determine what level they are working at before progressing onto Key Stage 2, which encompasses Years 3, 4, 5 and 6. The English Year 2 SATs paper will mainly cover spelling, punctuation and grammar. There will be three tests for English including a grammar test, a spelling test and a reading comprehension test where they will be required to read given paragraphs and answer inference–based questions.'
+      description:
+        'Help your child shine in their SATs exams with our dedicated support. Our experienced teachers provide the guidance they need to achieve their best.',
+      years: 'Year 1-6'
     },
     {
-      icon: <Award className="h-12 w-12 text-secondary" />,
+      icon: <Award className="h-12 w-12 text-[#7c1411]" />,
       title: 'GCSEs',
-      description: "The GCSE years are a critical time in a student’s educational journey, and at FL we understand the importance of these exams. Our GCSE tuition program is designed to help students gain a deep understanding of the core subjects and develop the skills required for exam success. We offer focused lessons in subjects such as Maths, English, Science, and more, using proven teaching methods that cater to the individual learning needs of each student. Whether it's mastering complex concepts, honing exam techniques, or improving revision strategies, we are here to guide students towards achieving their best possible results."
+      description:
+        'Boost your child\'s grades and unleash their true potential. Our GCSE teaching program empowers students to improve their performance and reach their goals.',
+      years: 'Year 7-11'
     },
     {
-      icon: <Target className="h-12 w-12 text-secondary" />,
+      icon: <Target className="h-12 w-12 text-[#7c1411]" />,
       title: 'A-Levels',
-      description: "A-Levels are the next step toward university and beyond, and we’re here to help students excel in this crucial stage. At FL our A-Level tuition program provides in-depth, subject-specific support to help students succeed in their exams and gain the knowledge they need for higher education. With a team of expert teachers in subjects such as Mathematics, English and Sciences, we focus on advanced concepts, critical thinking, and exam preparation. Our goal is to empower students to achieve top grades and confidently move forward in their academic careers."
+      description:
+        'Set your child up for top-tier results with our expert A-Levels teaching program. Our experienced teachers guide them every step of the way to achieve excellence.',
+      years: 'Year 12 & 13'
     }
   ];
 
   return (
-    <div className="py-16 bg-gray-50">
+    <div className="py-16 bg-[#019fe3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tagline */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
-            Excellence in Every Exam
+          <h2 className="text-4xl font-extrabold text-white sm:text-5xl mb-4">
+            We prepare students for success on key exams:
           </h2>
-          <p className="text-xl text-gray-600">
-            We produce excellent results in the following exams
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Key Exams Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {exams.map((exam, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              className="text-center bg-[#1434cb] text-white rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="flex items-center mb-6">
-                <div className="p-3 rounded-full bg-primary/10">
+              <h3 className="text-2xl font-bold">{exam.title}</h3>
+              <p className="text-lg mt-2">{exam.years}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Exams Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {exams.map((exam, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+              <div className="flex items-center mb-4">
+                <div className="p-3 rounded-full bg-[#1434cb]/10">
                   {exam.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 ml-4">
+                <h3 className="text-xl font-bold text-[#1434cb] ml-4">
                   {exam.title}
                 </h3>
               </div>
-              <p className="text-gray-600 text-lg leading-relaxed text-justify">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 {exam.description}
               </p>
-              <div className="mt-6">
+              <div className="mt-4">
                 <a
                   href="/courses"
-                  className="inline-flex items-center text-secondary font-semibold hover:text-secondary-dark transition-colors duration-300"
+                  className="inline-flex items-center text-[#7c1411] font-semibold hover:text-[#a31a16] transition-colors duration-300"
                 >
                   Learn more
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-5 h-5 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </a>
               </div>

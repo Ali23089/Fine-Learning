@@ -38,7 +38,7 @@ const Registration = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === 'checkbox') {
       if (name.startsWith('subject-')) {
         const subject = name.replace('subject-', '');
@@ -70,7 +70,6 @@ const Registration = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Handle form submission
     navigate('/thank-you');
   };
 
@@ -88,7 +87,7 @@ const Registration = () => {
           <p className="mt-2 text-gray-600">Please select a subject and stage first.</p>
           <button
             onClick={() => navigate('/courses')}
-            className="mt-4 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-all duration-300 transform hover:scale-105"
+            className="mt-4 bg-[#1434cb] text-white px-6 py-3 rounded-lg hover:bg-[#0f2ca1] transition-all duration-300 transform hover:scale-105"
           >
             Back to Courses
           </button>
@@ -102,9 +101,9 @@ const Registration = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Progress Header */}
-          <div className="bg-primary text-white py-6 px-8">
+          <div className="bg-[#1434cb] text-white py-6 px-8">
             <h2 className="text-3xl font-bold">Student Registration</h2>
-            <p className="mt-2 text-primary-100">Selected: {subject} - {stage}</p>
+            <p className="mt-2 text-[#dce6ff]">Selected: {subject} - {stage}</p>
             <div className="mt-6 flex justify-between">
               {sections.map((section, index) => (
                 <button
@@ -112,8 +111,8 @@ const Registration = () => {
                   onClick={() => setActiveSection(section.id)}
                   className={`flex items-center space-x-2 py-2 px-4 rounded-lg transition-all duration-300 ${
                     activeSection === section.id
-                      ? 'bg-white text-primary'
-                      : 'text-white hover:bg-primary-dark'
+                      ? 'bg-white text-[#1434cb]'
+                      : 'text-white hover:bg-[#0f2ca1]'
                   }`}
                 >
                   <section.icon className="h-5 w-5" />
@@ -134,7 +133,7 @@ const Registration = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-group">
                   <label className="form-label">
-                    <User className="h-5 w-5" />
+                    <User className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Name of Child</span>
                   </label>
                   <input
@@ -142,13 +141,13 @@ const Registration = () => {
                     name="childName"
                     value={formData.childName}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
                 <div className="form-group">
                   <label className="form-label">
-                    <Calendar className="h-5 w-5" />
+                    <Calendar className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Date of Birth</span>
                   </label>
                   <input
@@ -156,7 +155,7 @@ const Registration = () => {
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
@@ -164,7 +163,7 @@ const Registration = () => {
 
               <div className="form-group">
                 <label className="form-label">
-                  <BookOpen className="h-5 w-5" />
+                  <BookOpen className="h-5 w-5 text-[#1434cb]" />
                   <span className="font-bold text-lg">Year Group</span>
                 </label>
                 <input
@@ -172,14 +171,14 @@ const Registration = () => {
                   name="yearGroup"
                   value={formData.yearGroup}
                   onChange={handleChange}
-                  className="form-input h-14 bg-gray-100"
+                  className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                   required
                 />
               </div>
 
               <div className="space-y-4">
                 <label className="form-label">
-                  <BookOpen className="h-5 w-5" />
+                  <BookOpen className="h-5 w-5 text-[#1434cb]" />
                   <span className="font-bold text-lg">Subjects</span>
                 </label>
                 <div className="grid grid-cols-3 gap-4">
@@ -188,8 +187,8 @@ const Registration = () => {
                       key={subject}
                       className={`flex items-center justify-center p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
                         formData.subjects[subject as keyof typeof formData.subjects]
-                          ? 'border-primary bg-primary/10'
-                          : 'border-gray-200 hover:border-primary/50'
+                          ? 'border-[#7c1411] bg-[#7c1411]/10'
+                          : 'border-gray-200 hover:border-[#7c1411]'
                       }`}
                     >
                       <input
@@ -213,7 +212,7 @@ const Registration = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-group">
                   <label className="form-label">
-                    <Users className="h-5 w-5" />
+                    <Users className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Parent/Guardian Name</span>
                   </label>
                   <input
@@ -221,13 +220,13 @@ const Registration = () => {
                     name="parentName"
                     value={formData.parentName}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
                 <div className="form-group">
                   <label className="form-label">
-                    <Users className="h-5 w-5" />
+                    <Users className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Relation</span>
                   </label>
                   <input
@@ -235,7 +234,7 @@ const Registration = () => {
                     name="relation"
                     value={formData.relation}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
@@ -244,7 +243,7 @@ const Registration = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-group">
                   <label className="form-label">
-                    <Phone className="h-5 w-5" />
+                    <Phone className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Mobile Number</span>
                   </label>
                   <input
@@ -252,13 +251,13 @@ const Registration = () => {
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
                 <div className="form-group">
                   <label className="form-label">
-                    <Mail className="h-5 w-5" />
+                    <Mail className="h-5 w-5 text-[#1434cb]" />
                     <span className="font-bold text-lg">Email</span>
                   </label>
                   <input
@@ -266,7 +265,7 @@ const Registration = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="form-input h-14 bg-gray-100"
+                    className="form-input h-14 bg-gray-100 border border-gray-300 rounded-lg focus:border-[#1434cb] focus:ring focus:ring-[#1434cb]/50"
                     required
                   />
                 </div>
@@ -286,8 +285,8 @@ const Registration = () => {
                         key={day}
                         className={`flex items-center p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
                           formData.lessonDays[day as keyof typeof formData.lessonDays]
-                            ? 'border-primary bg-primary/10'
-                            : 'border-gray-200 hover:border-primary/50'
+                            ? 'border-[#7c1411] bg-[#7c1411]/10'
+                            : 'border-gray-200 hover:border-[#7c1411]'
                         }`}
                       >
                         <input
@@ -299,7 +298,7 @@ const Registration = () => {
                         />
                         <Clock className={`h-5 w-5 mr-3 ${
                           formData.lessonDays[day as keyof typeof formData.lessonDays]
-                            ? 'text-primary'
+                            ? 'text-[#7c1411]'
                             : 'text-gray-400'
                         }`} />
                         <span className="capitalize">{day}</span>
@@ -315,8 +314,8 @@ const Registration = () => {
                         key={day}
                         className={`flex items-center p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
                           formData.lessonDays[day as keyof typeof formData.lessonDays]
-                            ? 'border-primary bg-primary/10'
-                            : 'border-gray-200 hover:border-primary/50'
+                            ? 'border-[#7c1411] bg-[#7c1411]/10'
+                            : 'border-gray-200 hover:border-[#7c1411]'
                         }`}
                       >
                         <input
@@ -328,7 +327,7 @@ const Registration = () => {
                         />
                         <Clock className={`h-5 w-5 mr-3 ${
                           formData.lessonDays[day as keyof typeof formData.lessonDays]
-                            ? 'text-primary'
+                            ? 'text-[#7c1411]'
                             : 'text-gray-400'
                         }`} />
                         <span className="capitalize">{day}</span>
@@ -348,7 +347,7 @@ const Registration = () => {
                     const currentIndex = sections.findIndex(s => s.id === activeSection);
                     setActiveSection(sections[currentIndex - 1].id);
                   }}
-                  className="px-6 py-3 text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
+                  className="px-6 py-3 text-[#1434cb] border-2 border-[#1434cb] rounded-lg hover:bg-[#1434cb] hover:text-white transition-all duration-300"
                 >
                   Previous
                 </button>
@@ -360,14 +359,14 @@ const Registration = () => {
                     const currentIndex = sections.findIndex(s => s.id === activeSection);
                     setActiveSection(sections[currentIndex + 1].id);
                   }}
-                  className="ml-auto px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300"
+                  className="ml-auto px-6 py-3 bg-[#1434cb] text-white rounded-lg hover:bg-[#0f2ca1] transition-all duration-300"
                 >
                   Next
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="ml-auto px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300 transform hover:scale-105"
+                  className="ml-auto px-8 py-3 bg-[#7c1411] text-white rounded-lg hover:bg-[#a31a16] transition-all duration-300 transform hover:scale-105"
                 >
                   Submit Registration
                 </button>

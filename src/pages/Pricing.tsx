@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
 const Pricing = () => {
@@ -132,54 +133,90 @@ const Pricing = () => {
 
   const activePlans = billingType === 'monthly' ? monthlyPlans : perSessionPlans;
 
+  // Animation Variants
+  const headerVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  };
+
+  const buttonVariants = {
+    hover: { scale: 1.05, transition: { duration: 0.3 } },
+    tap: { scale: 0.95 }
+  };
+
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50">
       {/* Pricing Header */}
-      <div className="bg-primary text-white py-16">
+      <motion.div
+        className="bg-[#1434cb] text-white py-16"
+        initial="hidden"
+        animate="visible"
+        variants={headerVariants}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Transparent Pricing for Quality Education</h1>
           <p className="text-xl">Choose the plan that works best for your learning journey</p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Billing Toggle */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="flex justify-center space-x-4 mb-12">
-          <button
+          <motion.button
             className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               billingType === 'monthly'
-                ? 'bg-secondary text-white'
+                ? 'bg-[#1434cb] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
             onClick={() => setBillingType('monthly')}
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
           >
             Monthly
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               billingType === 'per-session'
-                ? 'bg-secondary text-white'
+                ? 'bg-[#1434cb] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
             onClick={() => setBillingType('per-session')}
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
           >
             Per Session
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {/* Pricing Plans */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+        }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activePlans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`rounded-lg shadow-lg overflow-hidden pricing-card ${
-                plan.recommended ? 'border-2 border-secondary transform scale-105' : ''
+              className={`rounded-lg shadow-lg overflow-hidden ${
+                plan.recommended ? 'border-2 border-[#7c1411] transform scale-105' : ''
               }`}
+              variants={cardVariants}
             >
               {plan.recommended && (
-                <div className="bg-secondary text-white text-center py-2">
+                <div className="bg-[#7c1411] text-white text-center py-2">
                   Best Value
                 </div>
               )}
@@ -188,12 +225,12 @@ const Pricing = () => {
                 <div className="space-y-4 mb-6">
                   <div>
                     <p className="text-sm text-gray-500">1 session per week</p>
-                    <p className="text-3xl font-bold text-primary">{plan.prices.oneSession}</p>
+                    <p className="text-3xl font-bold text-[#1434cb]">{plan.prices.oneSession}</p>
                   </div>
                   <div className="pt-4 border-t border-gray-200">
                     <p className="text-sm text-gray-500">2 sessions per week</p>
-                    <p className="text-3xl font-bold text-secondary">{plan.prices.twoSessions}</p>
-                    <span className="inline-block bg-secondary/10 text-secondary text-sm font-semibold px-3 py-1 rounded-full mt-2">
+                    <p className="text-3xl font-bold text-[#7c1411]">{plan.prices.twoSessions}</p>
+                    <span className="inline-block bg-[#7c1411]/10 text-[#7c1411] text-sm font-semibold px-3 py-1 rounded-full mt-2">
                       Best Deal
                     </span>
                   </div>
@@ -201,39 +238,50 @@ const Pricing = () => {
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-gray-600">
-                      <Check className="h-5 w-5 text-secondary mr-2 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-[#1434cb] mr-2 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <button
+                <motion.button
                   className={`w-full py-3 px-4 rounded-md font-bold transition duration-300 ${
                     plan.recommended
-                      ? 'bg-secondary hover:bg-secondary-dark text-white'
-                      : 'bg-primary hover:bg-primary-dark text-white'
+                      ? 'bg-[#7c1411] hover:bg-[#a31a16] text-white'
+                      : 'bg-[#1434cb] hover:bg-[#0f2ca1] text-white'
                   }`}
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
                 >
                   Get Started
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+      </motion.div>
 
-        {/* Additional Information */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Need a Custom Learning Plan?</h3>
-          <p className="text-gray-600 mb-8">
-            Contact us to discuss your specific requirements and create a personalized learning package
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-md transition duration-300"
-          >
-            Contact Us
-          </a>
-        </div>
-      </div>
+      {/* Additional Information */}
+      <motion.div
+        className="mt-16 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">Need a Custom Learning Plan?</h3>
+        <p className="text-gray-600 mb-8">
+          Contact us to discuss your specific requirements and create a personalized learning package.
+        </p>
+        <motion.a
+          href="/contact"
+          className="inline-block bg-[#7c1411] hover:bg-[#a31a16] text-white font-bold py-3 px-8 rounded-md transition duration-300"
+          variants={buttonVariants}
+          whileHover="hover"
+          whileTap="tap"
+        >
+          Contact Us
+        </motion.a>
+      </motion.div>
     </div>
   );
 };
