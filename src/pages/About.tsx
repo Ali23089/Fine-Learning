@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Heart, BookOpen, Star, Trophy, GraduationCap, Lightbulb, MessageCircle } from 'lucide-react';
+import { Users, Target, Heart, BookOpen, Star, Trophy, GraduationCap, Lightbulb, MessageCircle, Award, Globe, CheckCircle } from 'lucide-react';
 import Slider from 'react-slick'; // Importing react-slick for the slider
 import 'slick-carousel/slick/slick.css'; // Importing slick-carousel styles
 import 'slick-carousel/slick/slick-theme.css';
+import AchievementsGallery from '../components/AchievementsGallery'; // Import the new component
+import ImageSection from '../components/ImageSection'; // Import the new component
 
 const About = () => {
   const team = [
@@ -20,7 +22,7 @@ const About = () => {
     {
       name: 'Emma Williams',
       role: 'English Language Specialist',
-      image: 'src/assets/images/team/fine.jpg'
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu33ARcFb9jUqeD8P_OLxmh6Kl1mIzme7Zzw&s'
     }
   ];
 
@@ -42,44 +44,44 @@ const About = () => {
     },
     {
       icon: GraduationCap,
-      title: 'Expert Teachers',
+      title: 'Experienced Teachers',
       description: 'Experienced educators with extensive subject knowledge.'
     }
   ];
 
   const messages = [
     {
-      title: 'Message from the Head',
-      content: `At Fine Learning, we believe in nurturing every student’s potential. Our goal is to provide a supportive and engaging learning environment where students can thrive academically and personally.
+      title: 'Message from Head Teacher',
+      content: `At Fine Learning, we believe in nurturing every student's potential. Our goal is to provide a supportive and engaging learning environment where students can thrive academically and personally.
       Together, we can achieve excellence and prepare students for a bright future.`,
-      author: '- Sarah Johnson, Head of Fine Learning'
+      author: '- Head Teacher of Fine Learning'
     },
     {
       title: 'Message from the Director',
       content: `Fine Learning is committed to delivering high-quality education tailored to the needs of each student. Our dedicated team of educators works tirelessly to ensure that every child receives the attention and resources they deserve.
       We are passionate about inspiring the next generation of learners and leaders.`,
-      author: '- David Chen, Director of Fine Learning'
+      author: '- Director of Fine Learning'
     }
   ];
 
   const coreValues = [
     {
-      icon: <Heart className="h-8 w-8 text-[#1434cb]" />,
+      icon: <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-[#1434cb]" />,
       title: 'Respect and Care',
       description: 'Understanding the emotional needs of students, parents, staff, and partners is central to our approach.'
     },
     {
-      icon: <Star className="h-8 w-8 text-[#1434cb]" />,
+      icon: <Star className="h-6 w-6 sm:h-8 sm:w-8 text-[#1434cb]" />,
       title: 'Integrity',
       description: 'We foster an empathetic environment where everyone feels heard, supported, and valued.'
     },
     {
-      icon: <Target className="h-8 w-8 text-[#1434cb]" />,
+      icon: <Target className="h-6 w-6 sm:h-8 sm:w-8 text-[#1434cb]" />,
       title: 'Collaboration',
       description: 'We respond with compassion and understanding to challenges and aspirations.'
     },
     {
-      icon: <BookOpen className="h-8 w-8 text-[#1434cb]" />,
+      icon: <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-[#1434cb]" />,
       title: 'Empathy',
       description: 'We create an environment that encourages teamwork and mutual growth.'
     }
@@ -93,7 +95,16 @@ const About = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    arrows: false
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: true,
+          arrows: false
+        }
+      }
+    ]
   };
 
   // Animation Variants
@@ -116,42 +127,148 @@ const About = () => {
     <div className="bg-gray-50">
       {/* Hero Section */}
       <motion.div
-        className="bg-[#1434cb] text-white py-16"
+        className="bg-[#1434cb] text-white py-12 sm:py-16"
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-6">Welcome to Fine Learning</h1>
-            <p className="text-xl max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Welcome to Fine Learning</h1>
+            <p className="text-lg sm:text-xl max-w-3xl mx-auto px-4">
               Premier Provider of Personalized Education Services in the UK
             </p>
           </div>
         </div>
       </motion.div>
 
+      {/* Committed to Excellence Section */}
+      <motion.div
+        className="py-12 sm:py-16 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <Award className="h-12 w-12 sm:h-16 sm:w-16 text-[#7c1411] mx-auto mb-4 sm:mb-6 animate-bounce" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1434cb] mb-4 sm:mb-6">
+              Committed to Excellence
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto px-4">
+              At Fine Learning, we believe in every student's ability to succeed and are committed to helping them unlock their full potential by delivering the highest standards of education and support.
+            </p>
+          </div>
+
+          {/* Cards Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                icon: <Star className="h-8 w-8 sm:h-12 sm:w-12 text-[#1434cb]" />,
+                title: "Comprehensive Support",
+                description:
+                  "We partner with parents and schools to ensure every student receives personalized attention.",
+              },
+              {
+                icon: <Lightbulb className="h-8 w-8 sm:h-12 sm:w-12 text-[#1434cb]" />,
+                title: "Innovative Teaching",
+                description:
+                  "Empowering students with innovative learning techniques for measurable progress.",
+              },
+              {
+                icon: <GraduationCap className="h-8 w-8 sm:h-12 sm:w-12 text-[#1434cb]" />,
+                title: "Excellence in Education",
+                description:
+                  "Delivering unmatched standards of academic support and curriculum resources.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 sm:p-8 rounded-lg shadow-lg border-2 border-transparent transition-all duration-300 hover:border-[#019fe3] hover:shadow-[0_0_15px_#019fe3]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center justify-center bg-[#1434cb]/10 w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl font-semibold text-[#1434cb] mb-2 text-center">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-center text-sm sm:text-base">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      <ImageSection />
+
+      {/* Mission and Vision Section */}
+      <motion.div
+        className="py-12 sm:py-16 bg-gray-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {/* Mission */}
+            <motion.div
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-lg border-2 border-transparent transition-all duration-300 hover:border-[#019fe3] hover:shadow-[0_0_15px_#019fe3]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Globe className="h-8 w-8 sm:h-12 sm:w-12 text-[#1434cb] mb-4" />
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1434cb] mb-4">Mission</h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Our mission is to empower students by providing exceptional, tailored education that addresses their individual learning needs. We foster innovative learning through effective teaching methods and resources, ensuring measurable progress.
+              </p>
+            </motion.div>
+
+            {/* Vision */}
+            <motion.div
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-lg border-2 border-transparent transition-all duration-300 hover:border-[#019fe3] hover:shadow-[0_0_15px_#019fe3]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <CheckCircle className="h-8 w-8 sm:h-12 sm:w-12 text-[#1434cb] mb-4" />
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1434cb] mb-4">Vision</h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                We aim to reach learners around the globe, as we believe that education is a right for every child in every corner of the world. We are committed to providing you with the best possible learning environment to facilitate your education.{' '}
+                <span className="text-[#7c1411] font-extrabold text-base sm:text-lg">
+                  "Education is Success."
+                </span>
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Core Values Section */}
       <motion.div
-        className="py-16 bg-white"
+        className="py-12 sm:py-16 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants} // Animation for the entire section
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Left Side - Image */}
             <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="relative overflow-hidden rounded-lg shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
               <img
-                src="https://st2.depositphotos.com/36569202/48329/i/450/depositphotos_483298994-stock-photo-our-core-values-symbol-white.jpg" // Replace with your image URL
+                src="/assets/images/up1.jpg"
                 alt="Core Values"
-                className="rounded-lg shadow-lg object-cover w-full h-full"
+                className="object-cover w-full h-full"
               />
             </motion.div>
 
@@ -162,14 +279,14 @@ const About = () => {
               viewport={{ once: true, amount: 0.2 }}
               variants={sectionVariants} // Animation for the right side
             >
-              <h2 className="text-3xl font-bold text-[#1434cb] mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1434cb] mb-6">
                 Our Core Values
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {coreValues.map((value, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start space-x-4 bg-gray-100 p-4 rounded-lg shadow"
+                    className="flex items-start space-x-3 sm:space-x-4 bg-gray-100 p-3 sm:p-4 rounded-lg shadow"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{
@@ -178,12 +295,12 @@ const About = () => {
                       delay: index * 0.2 // Staggered animation for each item
                     }}
                   >
-                    <div className="p-4 bg-[#1434cb]/10 rounded-full">
+                    <div className="p-2 sm:p-4 bg-[#1434cb]/10 rounded-full">
                       {value.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-[#1434cb]">{value.title}</h3>
-                      <p className="text-sm text-gray-600">{value.description}</p>
+                      <h3 className="text-base sm:text-lg font-bold text-[#1434cb]">{value.title}</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">{value.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -195,29 +312,29 @@ const About = () => {
 
       {/* Features Section */}
       <motion.div
-        className="py-16 bg-white"
+        className="py-12 sm:py-16 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#1434cb]">Why Choose Fine Learning?</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-4xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1434cb]">Why Choose Fine Learning?</h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-4xl mx-auto px-4">
               Discover the unique benefits of learning with us and unlock your full potential.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gray-50 p-4 sm:p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300 hover:border-[#019fe3] hover:shadow-[0_0_15px_#019fe3]"
                 variants={cardVariants}
               >
-                <feature.icon className="h-12 w-12 text-[#7c1411] mb-4" />
-                <h3 className="text-xl font-semibold text-[#1434cb] mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <feature.icon className="h-8 w-8 sm:h-12 sm:w-12 text-[#7c1411] mb-4" />
+                <h3 className="text-lg sm:text-xl font-semibold text-[#1434cb] mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm sm:text-base">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -226,62 +343,79 @@ const About = () => {
 
       {/* Messages Section */}
       <motion.div
-        className="py-16" style={{ backgroundColor: '#019fe3' }}
+        className="py-12 sm:py-16" style={{ backgroundColor: '#019fe3' }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sliderVariants}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <MessageCircle className="h-12 w-12 text-white mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-white">Messages from Our Leaders</h2>
+          <div className="text-center mb-8 sm:mb-12">
+            <MessageCircle className="h-8 w-8 sm:h-12 sm:w-12 text-white mx-auto mb-4" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Messages from Our Leaders</h2>
           </div>
           <Slider {...sliderSettings}>
             {messages.map((message, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105"
                 variants={cardVariants}
               >
-                <h3 className="text-2xl font-bold text-[#1434cb] mb-4">{message.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{message.content}</p>
-                <p className="text-xl font-semibold text-[#7c1411] mt-6">{message.author}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#1434cb] mb-4">{message.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{message.content}</p>
+                <p className="text-lg sm:text-xl font-semibold text-[#7c1411] mt-4 sm:mt-6">{message.author}</p>
               </motion.div>
             ))}
           </Slider>
         </div>
       </motion.div>
 
+      {/* Spacer Section */}
+      <div className="py-8 bg-gray-50"></div> {/* Adds space with a light gray background */}
+
+      {/* Image Section */}
+      
+
       {/* Team Section */}
       <motion.div
-        className="py-16 bg-gray-50"
+        className="py-12 sm:py-16 bg-gray-50"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#1434cb]">Meet Our Expert Teachers</h2>
-            <p className="mt-4 text-lg text-gray-600">Dedicated educators committed to your success.</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1434cb]">Meet our Head of Departments</h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600">Dedicated educators committed to your success.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-transparent hover:border-[#019fe3] hover:shadow-[0_0_15px_#019fe3] transition-all duration-300 transform hover:scale-105"
                 variants={cardVariants}
               >
-                <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-[#1434cb]">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
+                <img src={member.image} alt={member.name} className="w-full h-48 sm:h-64 object-cover" />
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-[#1434cb]">{member.name}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base">{member.role}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
+      </motion.div>
+
+      {/* Achievements Gallery Section */}
+      <motion.div
+        className="py-12 sm:py-16 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <AchievementsGallery />
       </motion.div>
     </div>
   );

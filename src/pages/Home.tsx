@@ -4,6 +4,9 @@ import Hero from '../components/Hero';
 import Benefits from '../components/Benefits';
 import FeaturedCourses from '../components/FeaturedCourses';
 import ExamResults from '../components/ExamResults';
+import VideoSection from '../components/VideoSection';
+import PersonalizedLearningPlan from '../components/PersonalizedLearningPlan';
+import StudentSuccessSection from '../components/StudentSuccessSection'; // Import the new component
 
 const Home = () => {
   // Animation Variants
@@ -47,9 +50,38 @@ const Home = () => {
         <Benefits />
       </motion.div>
 
+      {/* Personalized Learning Plan Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <PersonalizedLearningPlan />
+      </motion.div>
+
       {/* Section Separator */}
       <motion.div
         className="border-t-8 border-[#7c1411] my-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={separatorVariants}
+      ></motion.div>
+
+      {/* New Student Success Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <StudentSuccessSection />
+      </motion.div>
+
+      {/* Section Separator */}
+      <motion.div
+        className="border-t-8 border-[#1434cb] my-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -65,34 +97,6 @@ const Home = () => {
         variants={sectionVariants}
       >
         <FeaturedCourses />
-      </motion.div>
-
-      
-      {/* Section Separator */}
-      <motion.div
-        className="border-t-8 border-[#1434cb] my-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={separatorVariants}
-      ></motion.div>
-
-      {/* Sponsors Section */}
-      <motion.div
-        className="bg-white py-16"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionVariants}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-[#1434cb] mb-8">Our Sponsors</h2>
-          <img
-            src="src/assets/images/boards.jpg" // Replace with the actual image URL
-            alt="Sponsors"
-            className="mx-auto rounded-lg shadow-lg"
-          />
-        </div>
       </motion.div>
 
       {/* Section Separator */}
@@ -115,7 +119,6 @@ const Home = () => {
         <ExamResults />
       </motion.div>
 
-
       {/* Section Separator */}
       <motion.div
         className="border-t-8 border-[#1434cb] my-8"
@@ -124,6 +127,16 @@ const Home = () => {
         viewport={{ once: true, amount: 0.2 }}
         variants={separatorVariants}
       ></motion.div>
+
+      {/* Video Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <VideoSection />
+      </motion.div>
     </div>
   );
 };
