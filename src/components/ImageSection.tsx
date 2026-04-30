@@ -4,26 +4,26 @@ const ImageSection = () => {
   return (
     <div className="py-8 sm:py-10 bg-[#019fe3]"> {/* Blue background with padding */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center space-x-4 sm:space-x-8 md:space-x-12 flex-wrap"> {/* Increased horizontal spacing with responsive design */}
+        <div className="flex justify-center gap-4 sm:gap-8 md:gap-12 flex-wrap">
           <img
-            src="/assets/images/ocr.jpg" // Replace with the actual image path
+            src="/assets/images/ocr.jpg"
             alt="Partner 1"
-            className="h-16 sm:h-20 md:h-24 object-contain" // Adjust height and maintain aspect ratio
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/nc.jpg" // Replace with the actual image path
+            src="/assets/images/nc.jpg"
             alt="Partner 2"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/AQA.jpg" // Replace with the actual image path
+            src="/assets/images/AQA.jpg"
             alt="Partner 3"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/ED.png" // Replace with the actual image path
+            src="/assets/images/ED.png"
             alt="Partner 4"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
         </div>
       </div>

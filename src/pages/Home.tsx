@@ -41,13 +41,21 @@ const Home = () => {
 
       {/* Benefits Section */}
       <motion.div
-        className="bg-[#1434cb] text-white py-16"
+        className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-12 sm:py-16 md:py-20 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
-        <Benefits />
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+        </div>
+        
+        <div className="relative">
+          <Benefits />
+        </div>
       </motion.div>
 
       {/* Personalized Learning Plan Section */}

@@ -14,10 +14,10 @@ const BooksGallery = () => {
   ];
 
   return (
-    <div className="py-16 bg-gray-50">
+    <div className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
-          className="text-3xl font-bold text-center text-[#1434cb] mb-8"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#1434cb] mb-6 sm:mb-8"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -25,7 +25,7 @@ const BooksGallery = () => {
           Books Gallery
         </motion.h2>
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
           initial="hidden"
           animate="visible"
           variants={{
@@ -42,10 +42,10 @@ const BooksGallery = () => {
               <img
                 src={book.image}
                 alt={book.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-36 sm:h-44 md:h-48 object-cover"
               />
-              <div className="p-4 bg-white">
-                <h3 className="text-lg font-bold text-gray-800 text-center">{book.title}</h3>
+              <div className="p-3 sm:p-4 bg-white">
+                <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-800 text-center">{book.title}</h3>
               </div>
             </motion.div>
           ))}

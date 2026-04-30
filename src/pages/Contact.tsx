@@ -132,23 +132,28 @@ const Contact = () => {
     <>
       <div className="min-h-screen">
         {/* Dark Blue Header */}
-        <div className="bg-[#1434cb] text-white py-12 sm:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                Get in Touch
-              </h1>
-              <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto px-4">
-                Have questions about our tutoring services? We're here to help you find the perfect learning solution for your child.
-              </p>
-            </motion.div>
+        <motion.div
+          className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-12 sm:py-16 md:py-20 overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
           </div>
-        </div>
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4">
+              Get in Touch
+            </h1>
+            <div className="w-16 sm:w-24 h-1 bg-white mx-auto rounded-full mb-4 sm:mb-6"></div>
+            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto px-4">
+              Have questions about our tutoring services? We're here to help you find the perfect learning solution for your child.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Contact Information Cards */}
         <div className="bg-white py-12">

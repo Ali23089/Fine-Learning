@@ -194,15 +194,16 @@ const Registration = () => {
 
   if (!subject || !stage) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Invalid Registration</h2>
-          <p className="mt-2 text-gray-600 text-sm sm:text-base">Please select a subject and stage first.</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="text-center bg-white p-8 rounded-xl shadow-lg max-w-md">
+          <AlertCircle className="h-16 w-16 text-[#7c1411] mx-auto mb-4" />
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Invalid Registration</h2>
+          <p className="mt-2 text-gray-600 text-sm sm:text-base mb-6">Please select a subject and stage first from our courses page.</p>
           <button
-            onClick={() => window.history.back()}
-            className="mt-4 bg-[#1434cb] text-white px-4 sm:px-6 py-3 rounded-lg hover:bg-[#0f2ca1] transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+            onClick={() => window.location.href = '/courses'}
+            className="bg-[#1434cb] text-white px-6 py-3 rounded-lg hover:bg-[#0f2ca1] transition-all duration-300 transform hover:scale-105 text-sm sm:text-base font-semibold"
           >
-            Go Back
+            Browse Courses
           </button>
         </div>
       </div>
@@ -231,28 +232,37 @@ const Registration = () => {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Progress Header */}
-          <div className="bg-[#1434cb] text-white py-4 sm:py-6 px-4 sm:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold">Student Registration</h2>
-            <p className="mt-2 text-[#dce6ff] text-sm sm:text-base">Selected: {subject} - {stage}</p>
-            <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
-              {sections.map((section, index) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center space-x-2 py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 text-sm sm:text-base ${
-                    activeSection === section.id
-                      ? 'bg-white text-[#1434cb]'
-                      : 'text-white hover:bg-[#0f2ca1]'
-                  }`}
-                >
-                  <section.icon className="h-4 w-4 sm:h-5 sm:w-5" />
-                  <span className="hidden sm:inline">{section.title}</span>
-                  <span className="sm:hidden">{section.title.split(' ')[0]}</span>
-                  {index < sections.length - 1 && (
-                    <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                  )}
-                </button>
-              ))}
+          <div className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-6 sm:py-8 px-4 sm:px-8 overflow-hidden">
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-white rounded-full filter blur-3xl"></div>
+              <div className="absolute bottom-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-white rounded-full filter blur-3xl"></div>
+            </div>
+
+            <div className="relative">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2">Student Registration</h2>
+              <div className="w-12 sm:w-16 h-1 bg-white rounded-full mb-3 sm:mb-4"></div>
+              <p className="mt-2 text-white/90 text-sm sm:text-base">Selected: {subject} - {stage}</p>
+              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
+                {sections.map((section, index) => (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`flex items-center space-x-2 py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 text-sm sm:text-base ${
+                      activeSection === section.id
+                        ? 'bg-white text-[#1434cb]'
+                        : 'text-white hover:bg-white/20'
+                    }`}
+                  >
+                    <section.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="hidden sm:inline">{section.title}</span>
+                    <span className="sm:hidden">{section.title.split(' ')[0]}</span>
+                    {index < sections.length - 1 && (
+                      <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 

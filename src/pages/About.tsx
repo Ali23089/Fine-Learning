@@ -127,18 +127,23 @@ const About = () => {
     <div className="bg-gray-50">
       {/* Hero Section */}
       <motion.div
-        className="bg-[#1434cb] text-white py-12 sm:py-16"
+        className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-12 sm:py-16 md:py-20 overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Welcome to Fine Learning</h1>
-            <p className="text-lg sm:text-xl max-w-3xl mx-auto px-4">
-              Premier Provider of Personalized Education Services in the UK
-            </p>
-          </div>
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4">Welcome to Fine Learning</h1>
+          <div className="w-16 sm:w-24 h-1 bg-white mx-auto rounded-full mb-4 sm:mb-6"></div>
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-4">
+            Premier Provider of Personalized Education Services in the UK
+          </p>
         </div>
       </motion.div>
 
@@ -376,8 +381,8 @@ const About = () => {
       {/* Image Section */}
       
 
-      {/* Team Section */}
-      <motion.div
+      {/* Team Section - commented out */}
+      {/* <motion.div
         className="py-12 sm:py-16 bg-gray-50"
         initial="hidden"
         whileInView="visible"
@@ -405,7 +410,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Achievements Gallery Section */}
       <motion.div

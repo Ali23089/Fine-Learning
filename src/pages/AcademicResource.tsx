@@ -1,17 +1,11 @@
-// filepath: d:\Fine_Learning\src\pages\AcademicResource.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import BooksGallery from '../components/BooksGallery'; // Import the BooksGallery component
+import BooksGallery from '../components/BooksGallery';
 
 const AcademicResource = () => {
   const [activeTab, setActiveTab] = useState<keyof typeof books>('Mathematics');
 
   // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
-  };
-
   const tabContentVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
@@ -61,99 +55,145 @@ const AcademicResource = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      {/* Study Books Section with Background Image */}
-      <motion.div
-        className="relative py-12"
-        style={{
-          backgroundImage: "url('https://c.files.bbci.co.uk/69e4/live/04b3a010-ef8e-11ef-80a2-3b5266fd5b33.png')", // Replace with the actual image path
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/30"></div> {/* Semi-transparent black overlay */}
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Heading */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/30">
+      {/* Hero Header */}
+      <div className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-16 sm:py-20 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-cyan-300/20 rounded-full blur-3xl"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          
           <motion.h1
-            className="text-4xl font-bold text-white mb-8 text-center"
-            initial={{ opacity: 0, y: -50 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Study Books
+            Study Books & Materials
           </motion.h1>
+          
           <motion.p
-            className="text-lg text-white mb-6 text-center"
-            initial={{ opacity: 0, y: -30 }}
+            className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto opacity-95 px-4"
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Access a variety of academic resources, including study materials, practice tests, and quizzes, carefully developed by our team.
+            Access a variety of academic resources, including study materials, practice tests, and quizzes, carefully developed by our team
           </motion.p>
+        </div>
+      </div>
 
-          {/* Tabs */}
-          <div className="flex justify-center space-x-6 mb-8">
-            {['Mathematics', 'English', 'Science'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab as keyof typeof books)}
-                className={`px-6 py-2 font-medium text-lg rounded-lg transition duration-300 ${
-                  activeTab === tab
-                    ? 'bg-[#1434cb] text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-[#019fe3] hover:text-white'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+      {/* Study Books Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        {/* Subject Tabs */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {['Mathematics', 'English', 'Science'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab as keyof typeof books)}
+              className={`px-6 sm:px-8 py-3 font-semibold text-base sm:text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg ${
+                activeTab === tab
+                  ? 'bg-gradient-to-r from-[#1434cb] to-[#019fe3] text-white shadow-blue-500/50'
+                  : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-[#1434cb] hover:to-[#019fe3] hover:text-white'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </motion.div>
 
-          {/* Tab Content */}
-          <motion.div
-            className="bg-sky-500 shadow-lg rounded-lg p-8"
-            initial="hidden"
-            animate="visible"
-            variants={tabContentVariants}
-            key={activeTab} // Ensures animation triggers on tab change
-          >
-            <h2 className="text-2xl font-semibold text-center text-white mb-4">
+        {/* Books List Card */}
+        <motion.div
+          className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+          initial="hidden"
+          animate="visible"
+          variants={tabContentVariants}
+          key={activeTab}
+        >
+          {/* Card Header */}
+          <div className={`py-6 px-8 ${
+            activeTab === 'Mathematics' ? 'bg-gradient-to-r from-[#1434cb] to-[#019fe3]' :
+            activeTab === 'Science' ? 'bg-gradient-to-r from-[#019fe3] to-[#1434cb]' :
+            'bg-gradient-to-r from-[#7c1411] to-[#a31a16]'
+          }`}>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center flex items-center justify-center gap-3">
+              <span className="text-3xl">
+                {activeTab === 'Mathematics' ? '📐' : activeTab === 'Science' ? '🔬' : '📖'}
+              </span>
               {activeTab} Books
             </h2>
-            <ul className="space-y-3">
-              {books[activeTab].map((book, index) => (
-                <motion.li
-                  key={index}
-                  className="bg-gray-100 hover:bg-maroon-500/20 transition duration-300 px-4 py-2 rounded-lg text-gray-700 font-medium shadow-md border-l-4 border-maroon-500"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <span className="text-lg font-semibold text-maroon-600">{book}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </motion.div>
+          </div>
 
-      {/* Divider */}
-      <div className="relative py-8">
+          {/* Books Grid */}
+          <div className="p-6 sm:p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {books[activeTab].map((book, index) => (
+                <motion.div
+                  key={index}
+                  className={`group relative bg-gradient-to-br from-gray-50 to-white p-5 rounded-xl border-2 transition-all duration-300 hover:shadow-xl cursor-pointer ${
+                    activeTab === 'Mathematics' ? 'border-[#1434cb]/20 hover:border-[#1434cb] hover:shadow-blue-500/20' :
+                    activeTab === 'Science' ? 'border-[#019fe3]/20 hover:border-[#019fe3] hover:shadow-cyan-500/20' :
+                    'border-[#7c1411]/20 hover:border-[#7c1411] hover:shadow-red-900/20'
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ scale: 1.03, y: -5 }}
+                >
+                  {/* Icon */}
+                  <div className={`absolute -top-3 -right-3 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
+                    activeTab === 'Mathematics' ? 'bg-gradient-to-br from-[#1434cb] to-[#019fe3]' :
+                    activeTab === 'Science' ? 'bg-gradient-to-br from-[#019fe3] to-[#1434cb]' :
+                    'bg-gradient-to-br from-[#7c1411] to-[#a31a16]'
+                  }`}>
+                    {index + 1}
+                  </div>
+
+                  {/* Book Title */}
+                  <div className="flex items-center gap-3">
+                    <div className={`w-1 h-12 rounded-full ${
+                      activeTab === 'Mathematics' ? 'bg-gradient-to-b from-[#1434cb] to-[#019fe3]' :
+                      activeTab === 'Science' ? 'bg-gradient-to-b from-[#019fe3] to-[#1434cb]' :
+                      'bg-gradient-to-b from-[#7c1411] to-[#a31a16]'
+                    }`}></div>
+                    <span className={`text-base sm:text-lg font-semibold ${
+                      activeTab === 'Mathematics' ? 'text-[#1434cb]' :
+                      activeTab === 'Science' ? 'text-[#019fe3]' :
+                      'text-[#7c1411]'
+                    }`}>
+                      {book}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Decorative Divider */}
+      <div className="relative py-12">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full border-t-2 border-dashed border-[#019fe3]"></div>
+          <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#019fe3] to-transparent"></div>
         </div>
         <div className="relative text-center">
-          <span className="px-4 bg-gray-50 text-[#1434cb] text-lg font-semibold">
-            Explore Our Books Gallery
+          <span className="px-6 py-3 bg-white rounded-full text-[#1434cb] text-lg font-bold shadow-lg border-2 border-[#019fe3]/30">
+            ✨ Explore Our Books Gallery
           </span>
         </div>
       </div>
 
       {/* Books Gallery Section */}
-      <BooksGallery />
+      <div className="pb-12">
+        <BooksGallery />
+      </div>
     </div>
   );
 };

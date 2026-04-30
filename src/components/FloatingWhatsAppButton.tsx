@@ -1,15 +1,16 @@
 import React from "react";
 
 export default function FloatingWhatsAppButton() {
-  const whatsappLink = "https://wa.me/447984084470"; // Updated phone number
+  const whatsappLink = "https://wa.me/447984084470?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20Fine%20Learning"; // Updated with pre-filled message
 
   return (
     <a
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-green-500 text-white p-3 sm:p-4 md:p-5 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-green-500 text-white p-3 sm:p-4 md:p-5 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-green-300"
       aria-label="Chat with us on WhatsApp"
+      title="Chat with us on WhatsApp"
     >
       {/* WhatsApp Icon as SVG */}
       <svg

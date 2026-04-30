@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance Optimization */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Form Styles */
 .form-group {
   @apply space-y-2;
@@ -30,6 +40,7 @@
 /* Hover Animation for Featured Cards */
 .featured-card {
   transition: all 0.3s ease-in-out;
+  will-change: transform;
 }
 
 .featured-card:hover {
@@ -40,6 +51,7 @@
 /* Benefit Icon Animation */
 .benefit-icon {
   transition: transform 0.3s ease-in-out;
+  will-change: transform;
 }
 
 .benefit-icon:hover {
@@ -49,6 +61,7 @@
 /* Button Hover Animation */
 .button-hover {
   transition: all 0.3s ease-in-out;
+  will-change: transform;
 }
 
 .button-hover:hover {
@@ -59,6 +72,7 @@
 /* Team Member Card Animation */
 .team-card {
   transition: all 0.3s ease-in-out;
+  will-change: transform;
 }
 
 .team-card:hover {
@@ -68,6 +82,7 @@
 /* Pricing Card Animation */
 .pricing-card {
   transition: all 0.3s ease-in-out;
+  will-change: transform;
 }
 
 .pricing-card:hover {
@@ -108,4 +123,32 @@
   transform: translateX(100%);
   opacity: 0;
   position: absolute;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Image Loading Optimization */
+img {
+  content-visibility: auto;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

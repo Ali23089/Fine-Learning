@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "fine-learning",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,10 @@
     "build:prod": "NODE_ENV=production vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "deploy": "npm run build:prod && firebase deploy"
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "deploy": "npm run build:prod && firebase deploy",
+    "deploy:hosting": "npm run build:prod && firebase deploy --only hosting"
   },
   "dependencies": {
     "firebase": "^10.8.0",

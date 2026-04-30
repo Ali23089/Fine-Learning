@@ -16,26 +16,26 @@ const StudentSuccessSection = () => {
         </div>
 
         {/* Add space between heading and image layout */}
-        <div className="mt-6 sm:mt-8 flex justify-center space-x-4 sm:space-x-8 md:space-x-12 flex-wrap"> {/* Horizontal layout with wrapping */}
+        <div className="mt-6 sm:mt-8 flex justify-center gap-4 sm:gap-8 md:gap-12 flex-wrap">
           <img
-            src="/assets/images/CL.jpg" // Replace with the actual image path
+            src="/assets/images/CL.jpg"
             alt="Oxford University"
-            className="h-16 sm:h-20 md:h-24 object-contain" // Adjust height and maintain aspect ratio
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/df.jpg" // Replace with the actual image path
+            src="/assets/images/df.jpg"
             alt="Cambridge University"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/oul.jpg" // Replace with the actual image path
+            src="/assets/images/oul.jpg"
             alt="Imperial College London"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
           <img
-            src="/assets/images/ucl.jpg" // Replace with the actual image path
+            src="/assets/images/ucl.jpg"
             alt="University College London"
-            className="h-16 sm:h-20 md:h-24 object-contain"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 object-contain"
           />
         </div>
       </div>

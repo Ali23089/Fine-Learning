@@ -41,10 +41,10 @@ const Courses = () => {
 
   const extraOptions = [
     {
-      id: 'premier-lesson',
-      name: 'Premier Lesson (60 min)',
+      id: 'premium-lesson',
+      name: 'Premium Lesson (60 min)',
       duration: '60 min',
-      image: '/assets/images/Premier_Lesson.jpg',
+      image: '/assets/images/Premium_lesson.png',
       description: 'Exclusive one-on-one lessons tailored to your needs.',
     },
     {
@@ -93,14 +93,21 @@ const Courses = () => {
     <div className="bg-gray-50">
       {/* Courses Header */}
       <motion.div
-        className="bg-[#1434cb] text-white py-12 sm:py-16"
+        className="relative bg-gradient-to-r from-[#1434cb] via-[#019fe3] to-[#1434cb] text-white py-12 sm:py-16 md:py-20 overflow-hidden"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">Our Courses</h1>
-          <p className="text-lg sm:text-xl px-4">Choose a subject and start exploring your path to knowledge</p>
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4">Our Courses</h1>
+          <div className="w-16 sm:w-24 h-1 bg-white mx-auto rounded-full mb-4 sm:mb-6"></div>
+          <p className="text-lg sm:text-xl text-white/90 px-4">Choose a subject and start exploring your path to knowledge</p>
         </div>
       </motion.div>
 

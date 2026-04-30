@@ -12,7 +12,7 @@ const Hero = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000, // 3 seconds delay
+    autoplaySpeed: 3000,
     arrows: false,
     responsive: [
       {
@@ -27,9 +27,9 @@ const Hero = () => {
 
   // Images for the slider
   const images = [
-    '/assets/images/11.jpg', // Children in a classroom
-    'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', // Children reading books
-    '/assets/images/6.jpg'  // Children working in a classroom
+    '/assets/images/11.jpg',
+    'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    '/assets/images/6.jpg'
   ];
 
   return (
@@ -40,24 +40,34 @@ const Hero = () => {
             <div className="sm:text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight font-extrabold text-[#7c1411]">
                 <span className="block">Empowering students at</span>
-                <span className="block text-[#1434cb]">Fine Learning</span> {/* Updated color */}
+                <span className="block text-[#1434cb]">Fine Learning</span>
               </h1>
               <p className="mt-3 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
                 UK's leading Online School
               </p>
               <p className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-gray-500 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
-                Maths, Science and English lessons to help students from year 1 to Year 13. Prepare for 11plus, SATs,GCSE and A-Level exams.
+                Maths, Science and English lessons to help students from year 1 to Year 13. Prepare for 11plus, SATs, GCSE and A-Level exams.
               </p>
               <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500 sm:mt-8 sm:max-w-xl sm:mx-auto md:mt-8 lg:mx-0">
                 <span className="text-[#1434cb] font-bold text-xl sm:text-2xl md:text-3xl">Join us today</span>, and let's embark on a journey of knowledge and success!
               </p>
-              <div className="mt-6 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="mt-6 sm:mt-8 sm:flex sm:justify-center lg:justify-start gap-4">
                 <div className="rounded-md shadow">
                   <a
                     href="/courses"
                     className="w-full flex items-center justify-center px-8 sm:px-12 py-3 sm:py-4 border border-transparent text-sm sm:text-base md:text-lg font-medium rounded-md text-white bg-[#1434cb] hover:bg-[#0f2ca1] transition-all duration-300 hover:transform hover:scale-105"
+                    aria-label="Browse our courses and start learning"
                   >
                     Start Learning
+                  </a>
+                </div>
+                <div className="mt-3 sm:mt-0 rounded-md shadow">
+                  <a
+                    href="/contact"
+                    className="w-full flex items-center justify-center px-8 sm:px-12 py-3 sm:py-4 border-2 border-[#1434cb] text-sm sm:text-base md:text-lg font-medium rounded-md text-[#1434cb] bg-white hover:bg-[#1434cb] hover:text-white transition-all duration-300 hover:transform hover:scale-105"
+                    aria-label="Contact us for more information"
+                  >
+                    Contact Us
                   </a>
                 </div>
               </div>
@@ -74,7 +84,8 @@ const Hero = () => {
               <img
                 className="h-64 sm:h-72 md:h-96 lg:h-[500px] xl:h-[600px] w-full object-cover"
                 src={image}
-                alt={`Slide ${index + 1}`}
+                alt={`Fine Learning classroom environment ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
           ))}
